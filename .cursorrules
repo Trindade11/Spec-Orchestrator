@@ -157,6 +157,23 @@ At the end of EVERY phase, deliverable, or significant output, always ask:
 ## Source of Truth
 
 - **Constitution**: `.specify/memory/constitution.md` - read FIRST for project rules
+- **Methodology**: `.specify/docs/sdp-pdca.md` - Spec-Driven PDCA cycle (PLAN → DO → CHECK → ACT)
+- **Memory System**: `.specify/docs/memory-system.md` - Continuous state management and update protocols
 - **Project Context**: `project-context/` - project-specific technical documentation
 - **Documentation**: `.specify/docs/` - visual flows and methodology guides
 - **Templates**: `.specify/templates/` - artifact templates
+
+### Key Methodology Documents
+
+For deep understanding of the process:
+- **SDP-PDCA**: Complete PDCA adaptation for spec-driven development
+  - PLAN: Context → Triage → Constitution → Specify → Clarify → Design
+  - DO: Tasks → Implementation (5 phases: Setup, Tests, Core, Integration, Polish)
+  - CHECK: 6-level validation (artifacts, quality, tests, acceptance, constitution, user)
+  - ACT: Categorized refinement + knowledge capture in artifact versions
+  
+- **Memory System**: How project state is maintained
+  - 4 memory types: Persistent, Versioned, Transient, Contextual
+  - Update protocol: Every command updates workplan + overview
+  - Query patterns: Read workplan first to know what to do next
+  - Knowledge capture: In `project-overview.md` version history and `constitution.md` evolution

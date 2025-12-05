@@ -1,0 +1,417 @@
+{
+  "windsurf": {
+    "total_files": 11,
+    "total_chars": 92434,
+    "total_lines": 2144,
+    "total_words": 12341,
+    "files": [
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\rules\\specrules.md",
+        "chars": 6343,
+        "lines": 167,
+        "words": 866,
+        "size_kb": 6.19,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-analyze.md",
+        "chars": 7339,
+        "lines": 189,
+        "words": 968,
+        "size_kb": 7.17,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-checklist.md",
+        "chars": 12124,
+        "lines": 207,
+        "words": 1593,
+        "size_kb": 11.84,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-clarify.md",
+        "chars": 11515,
+        "lines": 187,
+        "words": 1591,
+        "size_kb": 11.25,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-constitution.md",
+        "chars": 6905,
+        "lines": 124,
+        "words": 912,
+        "size_kb": 6.74,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-context.md",
+        "chars": 7765,
+        "lines": 247,
+        "words": 1057,
+        "size_kb": 7.58,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-implement.md",
+        "chars": 9650,
+        "lines": 187,
+        "words": 1232,
+        "size_kb": 9.42,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-plan.md",
+        "chars": 5255,
+        "lines": 134,
+        "words": 666,
+        "size_kb": 5.13,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-specify.md",
+        "chars": 12130,
+        "lines": 249,
+        "words": 1602,
+        "size_kb": 11.85,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-taskstoissues.md",
+        "chars": 1240,
+        "lines": 34,
+        "words": 178,
+        "size_kb": 1.21,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-triage.md",
+        "chars": 12168,
+        "lines": 419,
+        "words": 1676,
+        "size_kb": 11.88,
+        "readable": true
+      }
+    ]
+  },
+  "specify": {
+    "total_files": 38,
+    "total_chars": 255317,
+    "total_lines": 8306,
+    "total_words": 29312,
+    "files": [
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\agent-context.md",
+        "chars": 12931,
+        "lines": 341,
+        "words": 1194,
+        "size_kb": 12.63,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\best-practices.md",
+        "chars": 9264,
+        "lines": 336,
+        "words": 1015,
+        "size_kb": 9.05,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\examples.md",
+        "chars": 16776,
+        "lines": 660,
+        "words": 2272,
+        "size_kb": 16.38,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\glossary.md",
+        "chars": 6595,
+        "lines": 262,
+        "words": 893,
+        "size_kb": 6.44,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\migration-guide.md",
+        "chars": 12334,
+        "lines": 426,
+        "words": 1309,
+        "size_kb": 12.04,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\README.md",
+        "chars": 1903,
+        "lines": 60,
+        "words": 234,
+        "size_kb": 1.86,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\flows\\artifact-relationships.md",
+        "chars": 9310,
+        "lines": 316,
+        "words": 758,
+        "size_kb": 9.09,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\flows\\command-flow.md",
+        "chars": 16440,
+        "lines": 485,
+        "words": 1366,
+        "size_kb": 16.05,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\flows\\decision-tree.md",
+        "chars": 9855,
+        "lines": 255,
+        "words": 928,
+        "size_kb": 9.62,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\flows\\entry-lifecycle.md",
+        "chars": 9314,
+        "lines": 294,
+        "words": 875,
+        "size_kb": 9.1,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\flows\\FLOWS.md",
+        "chars": 2468,
+        "lines": 88,
+        "words": 290,
+        "size_kb": 2.41,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\flows\\gap-notation.md",
+        "chars": 6796,
+        "lines": 212,
+        "words": 827,
+        "size_kb": 6.64,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\flows\\overview.md",
+        "chars": 7130,
+        "lines": 211,
+        "words": 616,
+        "size_kb": 6.96,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\flows\\project-lifecycle.md",
+        "chars": 10912,
+        "lines": 344,
+        "words": 1247,
+        "size_kb": 10.66,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\flows\\triage-system.md",
+        "chars": 8200,
+        "lines": 242,
+        "words": 649,
+        "size_kb": 8.01,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\memory\\constitution.md",
+        "chars": 7280,
+        "lines": 195,
+        "words": 1030,
+        "size_kb": 7.11,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\scripts\\powershell\\check-prerequisites.ps1",
+        "chars": 4805,
+        "lines": 149,
+        "words": 520,
+        "size_kb": 4.69,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\scripts\\powershell\\common.ps1",
+        "chars": 3841,
+        "lines": 138,
+        "words": 413,
+        "size_kb": 3.75,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\scripts\\powershell\\create-new-feature.ps1",
+        "chars": 10813,
+        "lines": 328,
+        "words": 1271,
+        "size_kb": 10.56,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\scripts\\powershell\\setup-plan.ps1",
+        "chars": 1853,
+        "lines": 62,
+        "words": 214,
+        "size_kb": 1.81,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\scripts\\powershell\\update-agent-context.ps1",
+        "chars": 19870,
+        "lines": 446,
+        "words": 2111,
+        "size_kb": 19.4,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\agent-file-template.md",
+        "chars": 464,
+        "lines": 29,
+        "words": 66,
+        "size_kb": 0.45,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\checklist-template.md",
+        "chars": 1312,
+        "lines": 41,
+        "words": 179,
+        "size_kb": 1.28,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\plan-template.md",
+        "chars": 5823,
+        "lines": 198,
+        "words": 755,
+        "size_kb": 5.69,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\spec-template.md",
+        "chars": 5443,
+        "lines": 168,
+        "words": 746,
+        "size_kb": 5.32,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\tasks-template.md",
+        "chars": 9140,
+        "lines": 252,
+        "words": 1384,
+        "size_kb": 8.93,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\project-context\\agent-framework-template.md",
+        "chars": 7109,
+        "lines": 338,
+        "words": 824,
+        "size_kb": 6.94,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\project-context\\database-schema-template.md",
+        "chars": 6462,
+        "lines": 206,
+        "words": 991,
+        "size_kb": 6.31,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\project-context\\env-vars-template.md",
+        "chars": 3043,
+        "lines": 143,
+        "words": 400,
+        "size_kb": 2.97,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\project-context\\folder-structure-template.md",
+        "chars": 6030,
+        "lines": 217,
+        "words": 821,
+        "size_kb": 5.89,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\project-context\\learnings-template.md",
+        "chars": 3769,
+        "lines": 223,
+        "words": 533,
+        "size_kb": 3.68,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\project-context\\project-overview-template.md",
+        "chars": 4237,
+        "lines": 161,
+        "words": 656,
+        "size_kb": 4.14,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\project-context\\project-workplan-template.md",
+        "chars": 2983,
+        "lines": 95,
+        "words": 478,
+        "size_kb": 2.91,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\project-context\\README.md",
+        "chars": 4030,
+        "lines": 105,
+        "words": 557,
+        "size_kb": 3.94,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\project-context\\tools-registry-template.md",
+        "chars": 5749,
+        "lines": 239,
+        "words": 742,
+        "size_kb": 5.61,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\triage\\triage_constitution.md",
+        "chars": 441,
+        "lines": 17,
+        "words": 64,
+        "size_kb": 0.43,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\triage\\triage_log.json",
+        "chars": 124,
+        "lines": 7,
+        "words": 16,
+        "size_kb": 0.12,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\triage\\triage_specification.md",
+        "chars": 468,
+        "lines": 17,
+        "words": 68,
+        "size_kb": 0.46,
+        "readable": true
+      }
+    ]
+  },
+  "global": {
+    "total_files": 49,
+    "total_chars": 347751,
+    "total_lines": 10450,
+    "total_words": 41653,
+    "estimated_tokens": 86937
+  }
+}

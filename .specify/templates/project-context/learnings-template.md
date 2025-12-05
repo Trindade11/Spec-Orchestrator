@@ -1,5 +1,14 @@
 # Project Learnings
 
+> **⚠️ DEPRECATION NOTE**: This separate learnings file is **no longer the default approach**.  
+> **New approach**: Knowledge and learnings are now captured in:
+> - `project-overview.md` → Version history notes and gap resolutions
+> - `constitution.md` → New principles discovered during development
+> 
+> This template remains available if you prefer a **dedicated learnings log** for your project.
+
+---
+
 > Captured knowledge, decisions, and lessons learned throughout the project
 
 **Last Updated**: [DATE]
