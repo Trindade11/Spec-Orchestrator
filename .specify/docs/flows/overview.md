@@ -71,35 +71,43 @@ flowchart TB
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart TD
-    Start([User Input]) --> Triage{What type of content?}
-    
+    Start([User Input]) --> Q{Input type & size?}
+
+    Q -->|"Large or mixed"| Triage[/speckit-triage/]
+    Q -->|"Clear enough for conversation"| ContextCmd[/speckit-context/]
+
+    ContextCmd --> ContextFolder[project-context/]
+
     Triage -->|Principles, Rules| ConstBacklog[(Constitution Backlog)]
     Triage -->|Features, Behaviors| SpecBacklog[(Specification Backlog)]
-    Triage -->|Technical Context| ContextCmd[/speckit-context]
-    
-    ContextCmd --> ContextFolder[project-context/]
-    
-    ConstBacklog --> Constitution[/speckit-constitution]
-    SpecBacklog --> Specify[/speckit-specify]
-    
+
+    ConstBacklog --> Constitution[/speckit-constitution/]
+    SpecBacklog --> SpecifyFromBacklog[/speckit-specify/]
+
+    ContextFolder -->|Informs| Constitution
+    ContextFolder -->|Informs| SpecifyFromBacklog
+    ContextFolder -->|Informs| SpecifyDirect[/speckit-specify/]
+
     Constitution --> ConstitutionFile[constitution.md]
-    ConstitutionFile -->|Constrains| Specify
-    ContextFolder -->|Informs| Plan
-    
-    Specify --> SpecFile[spec.md]
-    SpecFile --> Plan[/speckit-plan]
-    
+    ConstitutionFile -->|Constrains| SpecifyFromBacklog
+    ConstitutionFile -->|Constrains| SpecifyDirect
+
+    SpecifyFromBacklog --> SpecFile[spec.md]
+    SpecifyDirect --> SpecFile
+
+    SpecFile --> Plan[/speckit-plan/]
+
     Plan --> Research[Research Phase]
     Research --> PlanFile[plan.md]
-    
+
     PlanFile --> Tasks[/speckit-tasks]
     Tasks --> TaskFile[tasks.md]
-    
+
     TaskFile --> Implement[/speckit-implement]
     Implement --> Code[Source Code]
-    
+
     Code -->|Feedback| SpecFile
-    
+
     style Start fill:#c8e6c9,stroke:#388e3c,color:#000
     style ConstBacklog fill:#e3f2fd,stroke:#1976d2,color:#000
     style SpecBacklog fill:#f3e5f5,stroke:#7b1fa2,color:#000
@@ -130,10 +138,13 @@ flowchart LR
         Impl["💻 /speckit-implement<br/>Generates code"]
     end
     
-    Raw --> Triage
-    Triage --> Const
-    Triage --> Spec
-    Triage --> Context
+    Raw --> Router{Input type & size?}
+    Router --> Triage
+    Router --> Context
+    Router --> Const
+    Router --> Spec
+    Router --> Plan
+    Router --> Task
     Context --> Plan
     Const --> Spec
     Spec --> Plan

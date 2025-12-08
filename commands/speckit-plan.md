@@ -1,10 +1,5 @@
 ---
 description: Execute the implementation planning workflow using the plan template to generate design artifacts.
-auto_execution_mode: 1
----
-
----
-description: Execute the implementation planning workflow using the plan template to generate design artifacts.
 handoffs: 
   - label: Create Tasks
     agent: speckit-tasks
@@ -31,13 +26,13 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Read FEATURE_SPEC and `.specify/memory/constitution.md`
    - Load IMPL_PLAN template (already copied)
    - **Load project context** (if exists):
-     - `project-context/project-overview.md` - **🎯 READ FIRST** - Macro view and status
+     - `project-context/project-overview.md` - Macro view and status
      - `project-context/env-vars.md` - Available environment variables
      - `project-context/database-schema.md` - Database structure and semantics
      - `project-context/tools-registry.md` - Available MCPs and tools
      - `project-context/agent-framework.md` - Agent architecture (if agentic)
      - `project-context/folder-structure.md` - Project organization
-   - If `project-context/` doesn't exist, warn user to run `/speckit-triage` first
+   - If `project-context/` doesn't exist, warn the user to run `/speckit-context` first to initialize project context
 
 3. **Execute plan workflow**: Follow the structure in IMPL_PLAN template to:
    - **MANDATORY**: Generate System Interaction Diagram in Mermaid (sequenceDiagram showing component interactions)
@@ -58,8 +53,8 @@ You **MUST** consider the user input before proceeding (if not empty).
    After creating/updating a plan, update `project-context/project-overview.md`:
    
    - Update Status Table: Increment Plans count, update emoji
-   - Update Blocos Funcionais: Mark Plan column as 🟡/🟢
-   - Add Technical View: Update Visão Técnica table with components/integrations from plan
+   - Update Functional Blocks table: Mark Plan column as 🟡/🟢
+   - Add Technical View: Update the Technical View table with components/integrations from the plan
    - Increment version if significant change
    - Add entry to version history
 

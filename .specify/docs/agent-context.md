@@ -25,36 +25,39 @@ When processing a request, read artifacts in this order:
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart TD
-    Request[User Request] --> Check{project-context/ exists?}
+    Request[User Request] --> Rules["0️⃣ Project Rules<br/>AI behavior & methodology"]
     
-    Check -->|Yes| Read0
-    Check -->|No| Read1
+    Rules --> Check{project-context/ exists?}
     
-    subgraph ProjectContext["0️⃣ Project Context (if exists)"]
-        Read0["Read project-context/<br/>- project-workplan.md<br/>- project-overview.md<br/>- env-vars.md<br/>- database-schema.md<br/>- tools-registry.md<br/>- agent-framework.md"]
+    Check -->|Yes| ReadContext
+    Check -->|No| ReadConst
+    
+    subgraph ProjectContext["1️⃣ Project Context (if exists)"]
+        ReadContext["Read project-context/<br/>- project-workplan.md<br/>- project-overview.md<br/>- env-vars.md<br/>- database-schema.md<br/>- tools-registry.md<br/>- agent-framework.md"]
     end
     
-    Read0 --> Read1
+    ReadContext --> ReadConst
     
     subgraph SpecKitArtifacts["Spec Kit Artifacts"]
-        Read1["1️⃣ constitution.md<br/>Project-wide constraints"]
-        Read2["2️⃣ spec.md<br/>Feature requirements"]
-        Read3["3️⃣ plan.md<br/>Technical architecture"]
-        Read4["4️⃣ tasks.md<br/>Work breakdown"]
+        ReadConst["2️⃣ constitution.md<br/>Project-wide constraints"]
+        ReadSpec["3️⃣ spec.md<br/>Feature requirements"]
+        ReadPlan["4️⃣ plan.md<br/>Technical architecture"]
+        ReadTasks["5️⃣ tasks.md<br/>Work breakdown"]
     end
     
-    Read1 --> Read2 --> Read3 --> Read4
+    ReadConst --> ReadSpec --> ReadPlan --> ReadTasks
     
-    Read4 --> Process[Process with full context]
+    ReadTasks --> Process[Process with full context]
     
     style ProjectContext fill:#e8f5e9,stroke:#4caf50,color:#000
     style SpecKitArtifacts fill:#fff3e0,stroke:#ff9800,color:#000
 ```
 
-**IMPORTANT**: Always check for `project-context/` folder first. In particular:
-- `project-workplan.md` tells you the current phase and which `/speckit.*` command should come next.
-- `project-overview.md` shows the macro project state (blocks, status, gaps).
-Then use env vars, database schema, tools, and agent framework to enrich technical context for planning and implementation.
+**IMPORTANT**: Always start by following `Project Rules` (AI behavior and methodology). Then:
+- If `project-context/` exists, use:
+  - `project-workplan.md` to understand the current phase and which `/speckit-*` command should come next.
+  - `project-overview.md` to see the macro project state (blocks, status, gaps).
+After that, read `constitution.md`, `spec.md`, `plan.md`, and `tasks.md` in order. Then use env vars, database schema, tools, and agent framework to enrich technical context for planning and implementation.
 
 ## Artifact Interpretation Guide
 
@@ -168,7 +171,7 @@ flowchart TD
 flowchart TD
     Missing{What's missing?}
     
-    Missing -->|"Constitution doesn't exist"| M1["Create with /speckit-constitution<br/>or proceed with defaults"]
+    Missing -->|"Constitution doesn't exist"| M1["Run /speckit-constitution<br/>to create minimal rails<br/>before generating code"]
     
     Missing -->|"Spec incomplete"| M2["Mark [NEEDS CLARIFICATION]<br/>Ask specific questions<br/>Don't assume"]
     

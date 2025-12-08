@@ -83,8 +83,8 @@ gantt
     title Macro Rhythm: 3-Month Horizon
     dateFormat YYYY-MM-DD
     section Project Setup
-    Context & Triage          :m1, 2024-01-01, 2w
-    Constitution Draft        :m2, after m1, 1w
+    Context & Constitution (Triage if needed) :m1, 2024-01-01, 2w
+    Constitution Draft                         :m2, after m1, 1w
     section MVP (Month 1)
     Core Features (P1)        :m3, after m2, 3w
     Integration & Testing     :m4, after m3, 2w
@@ -127,8 +127,8 @@ gantt
     title Feature Rhythm: 2-Week Cycle
     dateFormat YYYY-MM-DD
     section PLAN (Days 1-3)
-    Triage & Specify      :f1, 2024-01-01, 2d
-    Clarify & Plan        :f2, after f1, 1d
+    Specify (triage optional) :f1, 2024-01-01, 2d
+    Clarify & Plan            :f2, after f1, 1d
     section DO (Days 4-10)
     Tasks Breakdown       :f3, after f2, 1d
     Implementation        :f4, after f3, 6d

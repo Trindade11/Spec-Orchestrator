@@ -67,7 +67,7 @@ You **MUST** consider the user input before proceeding (if not empty).
    After generating tasks, update `project-context/project-overview.md`:
    
    - Update Status Table: Set Tasks status (e.g., "0/15" → "15 tasks generated")
-   - Update Blocos Funcionais: Mark Tasks column as 🟡 (ready to implement)
+   - Update Functional Blocks table: Mark Tasks column as 🟡 (ready to implement)
    - Increment version if significant change
    - Add entry to version history
 

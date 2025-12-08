@@ -10,33 +10,32 @@
 
 ```
 Spec Orchestrator/
-├── .windsurf/               # IDE-specific configurations and workflows
-│   ├── rules/              # Project rules for AI agents
-│   └── workflows/          # Automated workflow definitions
-├── .specify/               # Spec Kit methodology toolkit
+├── .specify/               # Spec Orchestrator methodology toolkit (adapted from GitHub Spec Kit)
 │   ├── docs/              # Methodology documentation
 │   ├── memory/            # Project constitution
 │   ├── scripts/           # Automation scripts
 │   ├── templates/         # Document templates
 │   └── triage/            # Triage backlog system
+├── commands/               # /speckit-* command definitions (IDE-agnostic)
 ├── project-context/        # Project-specific technical context (created by /speckit-context)
-└── specs/                  # Feature specifications (created by /speckit-specify)
+├── specs/                  # Feature specifications (created by /speckit-specify)
+└── Project Rules           # Source of truth for AI rules in this repo
 ```
 
 ---
 
 ## 🏛️ Core Files (Start Here)
 
-### `.windsurf/rules/specrules.md` (6.3k chars)
-**Purpose**: **MANDATORY** reading for all AI agents - defines behavioral rules and workflow integration  
+### Project Rules
+**Purpose**: **MANDATORY** reading for all AI agents - defines behavioral rules and workflow integration for this repo  
 **Contains**:
-- Spec Kit integration (11 commands with purposes)
+- Spec Kit integration (commands with purposes)
 - Visual modeling requirements (Mermaid mandatory in specs/plans, gap notation standards)
 - Project lifecycle flow (progressive Macro → Micro with decision points)
 - Communication style (user-centric, clear language, complete commands)
-- Stack consistency (respect plan.md choices)
+- Stack/project consistency rules
 - **Golden Rule**: Iterative Completeness - "🔄 Need another round?" is MANDATORY
-- Source of truth hierarchy (constitution → context → docs → templates)
+- Source of truth hierarchy (Project Rules + constitution + project-context → docs → templates)
 
 **Critical for**: AI agents starting ANY interaction with this project  
 **When to read**: ALWAYS FIRST - before any work
@@ -99,12 +98,12 @@ Spec Orchestrator/
 
 ---
 
-## 🔀 Workflows (.windsurf/workflows/)
+## 🔀 Workflows (commands/)
 
 ### `/speckit-triage` (12.2k chars)
 **Purpose**: **Content router** - Separates "rules for all features" from "specific feature requests"  
 **Philosophy**: Not everything is a feature; some are principles  
-**Input**: Mixed/broad user input (vision, ideas, constraints, features)  
+**Input**: Mixed/broad user input (vision, ideas, constraints, features, voice, large/legacy docs)  
 **Output**: 
 - `triage_constitution.md` - Backlog of principles ("Always...", "Never...", "Use X for...")
 - `triage_specification.md` - Backlog of features ("Build a...", "User can...", specific workflows)
@@ -116,10 +115,12 @@ Spec Orchestrator/
 - Round 2..N: Progressive refinement of personas, use cases, constraints
 - Exit when: Macro view stable + at least one feature ready to specify
 
-**Use when**: Starting a project or major scope change
+**Related**: `/speckit-specify` is also intended to be used iteratively—either by consuming entries from `triage_specification.md` across multiple runs or by refining the same feature specification directly from chat input.
+
+**Use when**: You have a large/mixed dump of input or a major scope change. For clean, focused features, prefer talking about the feature and using `/speckit-specify` directly.
 
 ### `/speckit-context` (7.8k chars)
-**Purpose**: Initialize or update project-context/ folder  
+**Purpose**: Initialize or update project-context/ folder (Step 0 for new projects)  
 **Creates**:
 - `project-workplan.md` - orchestration plan
 - `project-overview.md` - macro dashboard
@@ -132,13 +133,15 @@ Spec Orchestrator/
 **When to run**: Step 0 of new projects
 
 ### `/speckit-constitution` (6.9k chars)
-**Purpose**: Create/update constitution from triage backlog  
-**Input**: Pending entries from `triage_constitution.md`  
+**Purpose**: Create/update constitution from triage backlog **and/or** direct input  
+**Input**: 
+- Early in the project: conversation + context (stack, compliance, non-negotiable rules)  
+- Later: pending entries from `triage_constitution.md` and new learnings  
 **Output**: Updated `.specify/memory/constitution.md`  
 **Key feature**: Semantic versioning of constitution (MAJOR.MINOR.PATCH)
 
 ### `/speckit-specify` (12.1k chars)
-**Purpose**: Create feature specifications (WHAT and WHY)  
+**Purpose**: Create feature specifications (WHAT and WHY) and keep workplan/overview in sync  
 **Input**: Feature description or triage backlog  
 **Output**: `specs/###-feature-name/spec.md` with:
 - Process flow diagram (Mermaid - business language)
@@ -252,7 +255,7 @@ Guidelines and anti-patterns:
 
 #### `agent-context.md` (12.9k chars)
 **Critical for AI agents** - How to interpret and use artifacts:
-- Reading priority (project-context → constitution → spec → plan → tasks)
+- Reading priority (Project Rules → project-context → constitution → spec → plan → tasks)
 - Artifact interpretation guide
 - Decision making when conflicts arise
 - Output guidelines
@@ -277,10 +280,10 @@ SDD methodology overview with complete workflow visualization
 
 #### `project-lifecycle.md` (10.9k chars)
 Progressive project evolution (Macro → Micro):
-- V1: After triage (macro blocks with gaps)
+- V1: After context + constitution (and optional triage for large/mixed input) - macro blocks with gaps
 - V2: After specs (detailed connections)
 - V3+: After plans and implementation (technical view)
-- Multi-round triage process
+- Multi-round triage process (optional helper for large/mixed input)
 - Decision points
 - Refinement flow
 
@@ -380,7 +383,7 @@ Project organization guide
 - Philosophy and comparison (Traditional PDCA vs SDP-PDCA)
 - Complete SDP-PDCA cycle with visual flow
 - Detailed breakdown of all 4 phases:
-  - **PLAN**: Context → Triage → Constitution → Specify → Clarify → Design
+  - **PLAN**: Context → (Optional: Triage) → Constitution → Specify → Clarify → Design
   - **DO**: Tasks → Implementation (5 phases: Setup, Tests, Core, Integration, Polish)
   - **CHECK**: 6-level validation (artifacts, quality, tests, acceptance, constitution, user)
   - **ACT**: Categorized refinement + learning capture
@@ -487,7 +490,7 @@ Metadata and history of triage sessions
 5. `.specify/docs/best-practices.md`
 
 ### For AI Agents
-1. `.windsurf/rules/specrules.md` ⭐ ALWAYS READ FIRST
+1. Project Rules ⭐ ALWAYS READ FIRST
 2. `project-context/project-workplan.md` (if exists)
 3. `project-context/project-overview.md` (if exists)
 4. `.specify/memory/constitution.md`
@@ -508,9 +511,9 @@ Metadata and history of triage sessions
 
 | Topic | File |
 |-------|------|
-| **Commands** | `.windsurf/workflows/*.md`, `glossary.md` |
+| **Commands** | `commands/*.md`, `glossary.md` |
 | **Diagrams** | `flows/gap-notation.md`, `best-practices.md` |
-| **AI Agent Rules** | `.windsurf/rules/specrules.md`, `agent-context.md` |
+| **AI Agent Rules** | `Project Rules`, `agent-context.md` |
 | **Constitution** | `.specify/memory/constitution.md` |
 | **Project Lifecycle** | `flows/project-lifecycle.md` |
 | **Triage System** | `flows/triage-system.md` |

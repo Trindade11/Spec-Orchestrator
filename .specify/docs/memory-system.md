@@ -33,8 +33,8 @@ flowchart TB
     end
     
     subgraph Contextual["🎯 Contextual Memory (AI Agents)"]
-        SYS["System prompts<br/>SYSTEM-PROMPT-CONTEXT.md"]
-        RUL["Active rules<br/>specrules.md"]
+        SYS["System prompts<br/>(host-specific)"]
+        RUL["Project rules<br/>Project Rules (primary AI rules doc)"]
         CAT["Document catalog<br/>CATALOG.md"]
     end
     
@@ -590,7 +590,7 @@ After ANY `/speckit-*` command:
 
 Before ANY work:
 
-- [ ] Read `specrules.md`
+- [ ] Read `Project Rules` (AI behavior & methodology)
 - [ ] Read `project-workplan.md` (if exists)
 - [ ] Read `project-overview.md` (if exists)
 - [ ] Read `constitution.md`

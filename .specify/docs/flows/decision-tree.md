@@ -100,7 +100,7 @@ flowchart TD
     Q1 -->|"constitution + spec + plan"| State4[🔧 Have plan]
     Q1 -->|"All including tasks"| State5[📝 Ready to implement]
     
-    State1 --> Action1["Start with /speckit-constitution<br/>or /speckit-triage"]
+    State1 --> Action1["Start with /speckit-context<br/>then /speckit-constitution<br/>(triage optional for mixed input)"]
     State2 --> Action2["Ready for /speckit-specify"]
     State3 --> Action3["Ready for /speckit-plan"]
     State4 --> Action4["Ready for /speckit-tasks"]
@@ -171,13 +171,19 @@ flowchart TD
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart LR
     Input["User describes<br/>payment feature"]
-    
-    Input --> T[/speckit-triage]
-    T --> CTX[/speckit-context<br/>if context exists]
-    T --> C[/speckit-constitution<br/>if rules exist]
-    T --> S[/speckit-specify]
-    CTX --> S
-    C --> S
+
+    Input --> Q{Input type & size?}
+
+    Q -->|"Clear enough"| CTX[/speckit-context]
+    Q -->|"Large or mixed"| T[/speckit-triage]
+
+    CTX --> C[/speckit-constitution]
+    C --> S[/speckit-specify]
+
+    T --> CTX
+    T --> C
+    T --> S
+
     S --> P[/speckit-plan]
     P --> K[/speckit-tasks]
     K --> I[/speckit-implement]
@@ -234,8 +240,8 @@ flowchart TD
     end
     
     subgraph Right["✅ DO THIS INSTEAD"]
-        R1["Constitution → Specify → Plan → Tasks → Implement"]
-        R2["Triage first to separate concerns"]
+        R1["Context → Constitution → Specify → Plan → Tasks → Implement"]
+        R2["Use triage when input is large or mixed"]
         R3["Plan defines architecture, then tasks"]
         R4["Tasks define acceptance criteria, then implement"]
         R5["Context first to inform planning"]

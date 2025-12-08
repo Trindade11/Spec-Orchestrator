@@ -21,6 +21,18 @@ You **MUST** analyze the user input and separate it into appropriate categories.
 
 This command helps users who provide broad, mixed content (combining principles and features) by automatically separating what belongs to Constitution vs. Specification.
 
+### When to Use
+
+- **Optional** – not required to start a simple project.
+- Use it when you have:
+  - A **big dump** of ideas (long text, many topics mixed together).
+  - **Voice transcripts** mixing vision, rules and features.
+  - **Legacy documents** (PRD, vision docs) where principles and functionalities are intertwined.
+- After triage:
+  - `/speckit-constitution` consumes `triage_constitution.md`.
+  - `/speckit-specify` consumes `triage_specification.md`.
+  - Together with `/speckit-context`, they keep `project-workplan.md` and `project-overview.md` in sync.
+
 **Key Features**:
 - Results are persisted to backlog files that downstream agents can consume
 - Creates/updates `project-workplan.md` to orchestrate agent execution

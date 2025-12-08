@@ -34,7 +34,7 @@
 ## 📋 Mandatory Reading Order
 
 ### Before ANY interaction:
-1. ✅ `.windsurf/rules/specrules.md` - Project rules (ALWAYS READ FIRST)
+1. ✅ `Project Rules` - Project rules & workflow for this repo (ALWAYS READ FIRST; configure as project/IDE rules/system prompt when possible)
 2. ✅ `project-context/project-workplan.md` - Which agent to call next (if exists)
 3. ✅ `project-context/project-overview.md` - Current project state (if exists)
 4. ✅ `.specify/memory/constitution.md` - Project principles
@@ -50,21 +50,23 @@
 
 ```
 /speckit-context (Step 0)
-    ↓ Creates project-context/ folder
-/speckit-triage (Step 1-N) → Multi-round refinement
-    ↓ Creates backlogs + updates workplan/overview
-/speckit-constitution (Step 4)
-    ↓ Consolidates principles
-/speckit-specify (Step 5)
-    ↓ Creates spec.md (WHAT + WHY)
+    ↓ Creates project-context/ folder (workplan + overview)
+/speckit-constitution (Step 1)
+    ↓ Creates/updates project principles (rails)
+/speckit-specify (Step 2-N)
+    ↓ Creates/updates spec.md (WHAT + WHY)
 /speckit-clarify (Optional)
     ↓ Resolves ambiguities
-/speckit-plan (Step 6)
+/speckit-plan (Step 3)
     ↓ Creates plan.md (HOW)
-/speckit-tasks (Step 7)
+/speckit-tasks (Step 4)
     ↓ Creates tasks.md
-/speckit-implement (Step 8)
+/speckit-implement (Step 5)
     ↓ Generates code
+
+# Optional helper for large/mixed input
+/speckit-triage (Any time)
+    ↓ Separates principles/features into backlogs feeding constitution/specify
 ```
 
 **Always check `project-workplan.md` to know which command comes next!**
@@ -191,7 +193,7 @@
 ## 📁 File Locations
 
 ```
-.windsurf/rules/specrules.md          # AI agent behavior rules
+Project Rules                           # AI agent behavior rules & workflow for this repo
 .specify/memory/constitution.md        # Project principles
 .specify/docs/                         # Methodology documentation
 .specify/templates/                    # Artifact templates
@@ -228,7 +230,7 @@ specs/###-feature-name/                # Feature artifacts
 
 | Missing | Action |
 |---------|--------|
-| Constitution | Create with `/speckit-constitution` or use defaults |
+| Constitution | Create or update with `/speckit-constitution` (start with minimal rails) |
 | Spec incomplete | Mark `[NEEDS CLARIFICATION]`, ask specific questions |
 | Plan gaps | Suggest plan update or ask for guidance |
 | Task criteria unclear | Ask: "How will we know this is done?" |
@@ -309,12 +311,12 @@ If any check fails → STOP and update relevant artifact first
 
 ## 🚀 Quick Start for AI Agents
 
-1. Read `.windsurf/rules/specrules.md`
+1. Read `Project Rules` (ideally configured as project rules/system prompt; otherwise open the file from the repo)
 2. Check if `project-context/project-workplan.md` exists
    - If YES: Read it to know which command to run next
    - If NO: Suggest running `/speckit-context` first
 3. Read `project-context/project-overview.md` for macro view (if exists)
-4. Read `.specify/memory/constitution.md` for project rules
+4. Read `.specify/memory/constitution.md` for project principles
 5. Proceed with the recommended command from workplan
 6. Update `project-workplan.md` and `project-overview.md` after completing work
 7. ALWAYS end with "🔄 Need another round?"

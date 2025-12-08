@@ -1,10 +1,5 @@
 ---
 description: Create or update the project constitution from interactive or provided principle inputs, ensuring all dependent templates stay in sync.
-auto_execution_mode: 1
----
-
----
-description: Create or update the project constitution from interactive or provided principle inputs, ensuring all dependent templates stay in sync.
 handoffs: 
   - label: Build Specification
     agent: speckit-specify
@@ -23,6 +18,20 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 You are updating the project constitution at `.specify/memory/constitution.md`. This file is a TEMPLATE containing placeholder tokens in square brackets (e.g. `[PROJECT_NAME]`, `[PRINCIPLE_1_NAME]`). Your job is to (a) collect/derive concrete values, (b) fill the template precisely, and (c) propagate any amendments across dependent artifacts.
 
+### When to Use
+
+- **New project (right after `/speckit-context`)**:
+  - Register a **minimal constitution** with:
+    - Global stack (languages, frameworks, databases, cloud, mandatory tools)
+    - Non-negotiable rules (compliance, security, global policies)
+    - Communication style and practices that apply to ALL features
+  - Even if the triage backlog is empty, use the current conversation + project context to set these initial rails.
+
+- **Throughout the project**:
+  - Consolidate learnings coming from `/speckit-triage`, specs and discussions
+  - Incorporate pending entries from `triage_constitution.md`
+  - Create a new constitution version whenever global principles are created, changed or clarified
+
 Follow this execution flow:
 
 ### Step 0: Check Triage Backlog (ALWAYS DO THIS FIRST)
@@ -39,7 +48,12 @@ Follow this execution flow:
      - **Absorbed at**: [YYYY-MM-DD HH:MM]
      - **Output ref**: .specify/memory/constitution.md
      ```
-4. Update `.specify/triage/triage_log.json`:
+4. If **no pending entries** exist (for example, the very first run at project start):
+   - Rely primarily on:
+     - The user input in the current conversation
+     - The existing repo context (`README.md`, `Project Rules`, `project-context/`)
+   - Focus on recording stack and global rules that prevent wrong paths in subsequent phases.
+5. Update `.specify/triage/triage_log.json`:
    - Find the entry by ID
    - Set `"status": "absorbed"`
    - Set `"absorbed_by": "speckit-constitution"`

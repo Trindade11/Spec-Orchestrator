@@ -49,13 +49,19 @@ flowchart TB
 flowchart TD
     subgraph PLAN["📋 PLAN: Specification-Driven Planning"]
         P1["/speckit-context<br/>Initialize project"]
-        P2["/speckit-triage<br/>Clarify scope"]
+        P2["/speckit-triage<br/>Clarify scope (optional,<br/>for large/mixed input)"]
         P3["/speckit-constitution<br/>Define principles"]
         P4["/speckit-specify<br/>Spec WHAT & WHY"]
         P5["/speckit-clarify<br/>Resolve gaps"]
         P6["/speckit-plan<br/>Design HOW"]
         
-        P1 --> P2 --> P3 --> P4 --> P5 --> P6
+        %% Default conversational path
+        P1 --> P3 --> P4 --> P5 --> P6
+
+        %% Optional triage support when input is large/mixed
+        P1 --> P2
+        P2 --> P3
+        P2 --> P4
     end
     
     subgraph DO["🛠️ DO: Specification-Guided Implementation"]
@@ -120,7 +126,7 @@ flowchart LR
         CTX[Establish<br/>technical context]
     end
     
-    subgraph Triage["🔀 Triage"]
+    subgraph Triage["🔀 Triage (optional for large/mixed input)"]
         T1[Round 1:<br/>Macro blocks]
         T2[Round 2..N:<br/>Refine details]
         T1 --> T2
@@ -140,7 +146,13 @@ flowchart LR
         PL[HOW<br/>Technical view]
     end
     
-    Context --> Triage --> Constitution --> Specification --> Design
+    %% Default PLAN flow
+    Context --> Constitution --> Specification --> Design
+
+    %% Optional triage support when needed
+    Context --> Triage
+    Triage --> Constitution
+    Triage --> Specification
     
     style Context fill:#d1c4e9,stroke:#512da8,color:#000
     style Triage fill:#ffecb3,stroke:#ff8f00,color:#000
@@ -472,7 +484,7 @@ flowchart TB
 
 | Metric | Target | How to Measure |
 |--------|--------|---------------|
-| Triage rounds to stability | ≤ 5 | Count in `project-workplan.md` |
+| Triage rounds to stability (when using triage) | ≤ 5 | Count in `project-workplan.md` |
 | Clarification markers in spec | ≤ 3 | Count `[NEEDS CLARIFICATION]` |
 | Constitution principles | 8-15 | Count in `constitution.md` |
 | Spec completeness | 100% | All sections filled |
@@ -517,7 +529,7 @@ flowchart TB
    - Documented OAuth2 providers in `tools-registry.md`
    - Added JWT to `database-schema.md`
 
-2. **Triage** (`/speckit-triage` x3 rounds):
+2. **Triage** (`/speckit-triage` x3 rounds, optional for large/mixed input):
    - Round 1: "Need auth with OAuth"
    - Round 2: "Support Google + GitHub"
    - Round 3: "Session management details"
@@ -690,7 +702,7 @@ mindmap
 
 | Situation | Phase | Action |
 |-----------|-------|--------|
-| Starting new feature | PLAN | Run `/speckit-specify` |
+| Starting new feature | PLAN | `/speckit-context` → `/speckit-constitution` → `/speckit-specify` (triage optional) |
 | Spec unclear | PLAN | Run `/speckit-clarify` |
 | Ready to code | DO | Run `/speckit-implement` |
 | Code complete | CHECK | Run `/speckit-analyze` + `/speckit-checklist` |

@@ -5,7 +5,9 @@
 ## Overview
 
 The project evolves progressively, starting from a macro view that is refined
-gradually as interactions advance.
+gradually as interactions advance. The **default path** uses `/speckit-context` and
+`/speckit-constitution` first; `/speckit-triage` is an **optional** helper when the
+initial input is large or mixed.
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
@@ -14,11 +16,15 @@ flowchart TD
         U([User describes project])
     end
     
-    subgraph Triage["🔀 TRIAGE"]
+    subgraph Setup["⚙️ SETUP (Default)"]
+        C[/speckit-context/]
+        K[/speckit-constitution/]
+    end
+    
+    subgraph Triage["🔀 TRIAGE (Optional)"]
         T[/speckit-triage/]
-        T --> Const[Constitution Draft]
-        T --> Spec[Specification Draft]
-        T --> Overview["🎯 project-overview.md<br/>(MACRO VIEW V1)"]
+        T --> ConstDraft[Constitution Draft]
+        T --> SpecDraft[Specification Draft]
     end
     
     subgraph Evolution["📈 EVOLUTION"]
@@ -38,7 +44,15 @@ flowchart TD
         Impl[/speckit-implement/]
     end
     
+    Overview["🎯 project-overview.md<br/>(MACRO VIEW V1+)"]
+    
+    U --> C
+    C --> K
     U --> T
+    
+    K --> Overview
+    T --> Overview
+    
     Overview --> Evolution
     
     Specify -->|Updates| V2
@@ -49,6 +63,8 @@ flowchart TD
     
     style Overview fill:#e8f5e9,stroke:#4caf50,stroke-width:3px,color:#000
     style Evolution fill:#e3f2fd,stroke:#1976d2,color:#000
+    style Setup fill:#f5f5f5,stroke:#9e9e9e,color:#000
+    style Triage fill:#fff3e0,stroke:#ff9800,color:#000
 ```
 
 ## Central Artifacts
@@ -107,7 +123,7 @@ flowchart LR
 | Command | Workplan Updates | Overview Updates |
 |---------|------------------|------------------|
 | `/speckit-context` | Creates workplan + overview | Creates overview V0 |
-| `/speckit-triage` | Logs round, updates phase, backlogs | Creates/updates macro blocks, gaps |
+| `/speckit-triage` (optional) | Logs round, updates phase, backlogs | Creates/updates macro blocks, gaps |
 | `/speckit-constitution` | Marks phase DONE, updates DP2 | – |
 | `/speckit-specify` | Updates spec backlog, phase status | Updates specs status, resolves gaps |
 | `/speckit-plan` | Marks phase, updates DP1 | Adds technical view, updates status |
@@ -215,22 +231,42 @@ flowchart TD
 
 ## Project Start Sequence
 
-For **new projects**, follow this sequence:
+For **new projects**, the **default conversational flow** is:
 
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart TD
-    S0["Step 0: /speckit-context"] --> S1["Step 1: /speckit-triage (Round 1)"]
-    S1 --> S2["Step 2: /speckit-triage (N rounds)"]
+    S0["Step 0: /speckit-context"] --> S1["Step 1: /speckit-constitution (minimal rails)"]
+    S1 --> S2["Step 2: /speckit-specify (first feature)"]
+    S2 --> S3["Step 3: /speckit-clarify (if needed)"]
+    S3 --> S4["Step 4: /speckit-plan"]
+    S4 --> S5["Step 5: /speckit-tasks"]
+    S5 --> S6["Step 6: /speckit-implement"]
+
+    S2 -->|Spec already clear| S4
+    S6 -.->|New feature| S2
+
+    style S0 fill:#e8f5e9,stroke:#4caf50,color:#000
+```
+
+For **large/mixed input** (voice, legacy docs, brain dumps), you can use an
+**optional triage-based flow**:
+
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
+flowchart TD
+    S0["Step A0: /speckit-context"] --> S1["Step A1: /speckit-triage (Round 1)"]
+    S1 --> S2["Step A2: /speckit-triage (N rounds)"]
     S2 --> DP1{"DP1: Project Structure?"}
-    DP1 -->|Decided| S4["Step 4: /speckit-constitution"]
-    S4 --> S5["Step 5: /speckit-specify"]
-    S5 --> S6["Step 6: /speckit-plan"]
-    S6 --> S7["Step 7: /speckit-tasks"]
-    S7 --> S8["Step 8: /speckit-implement"]
+    DP1 -->|Decided| S4["Step A4: /speckit-constitution (consolidate principles)"]
+    S4 --> S5["Step A5: /speckit-specify (absorb triage_specification.md)"]
+    S5 --> S6["Step A6: /speckit-clarify (if needed)"]
+    S6 --> S7["Step A7: /speckit-plan"]
+    S7 --> S8["Step A8: /speckit-tasks"]
+    S8 --> S9["Step A9: /speckit-implement"]
     
     S2 -.->|More refinement needed| S2
-    S8 -.->|New feature| S5
+    S9 -.->|New feature| S5
     
     style S0 fill:#e8f5e9,stroke:#4caf50,color:#000
     style DP1 fill:#fff9c4,stroke:#fbc02d,color:#000
@@ -238,7 +274,8 @@ flowchart TD
 
 ### Multi-Round Triage
 
-`/speckit-triage` is designed for **N interactions**, not one-shot:
+When you choose the triage-based flow, `/speckit-triage` is designed for
+**N interactions**, not one-shot:
 
 | Round | Focus | Outputs |
 |-------|-------|--------|

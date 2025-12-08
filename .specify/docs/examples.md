@@ -6,7 +6,7 @@ This example walks through creating a **User Authentication** feature using all 
 
 ---
 
-## Phase 0: Setup Project Context (Optional but Recommended)
+## Phase 0: Setup Project Context (Recommended First Step)
 
 ### Command: /speckit-context
 
@@ -32,6 +32,8 @@ This step is optional but helps AI agents understand your project better when ge
 ---
 
 ## Phase 1: Triage
+
+> This example uses `/speckit-triage` because the initial description is a larger, mixed input. For small, clear requests you can skip this phase and go from `/speckit-context` + `/speckit-constitution` directly to `/speckit-specify`.
 
 ### User Input
 
@@ -156,8 +158,8 @@ understand overall project status and gaps.
 
 ## Project Workplan (Auto-Generated Agent Orchestration)
 
-Alongside the overview, `/speckit-context` + `/speckit-triage` maintain
-`project-context/project-workplan.md`, which tells you **which agent to call next**.
+Alongside the overview, `/speckit-context` creates and commands like `/speckit-specify`, `/speckit-plan`, `/speckit-tasks`, and `/speckit-implement` primarily maintain
+`project-context/project-workplan.md`. When you use `/speckit-triage` for large or mixed input, it also logs rounds and suggests next steps in this file, which tells you **which agent to call next**.
 
 For the authentication example, an excerpt might look like:
 

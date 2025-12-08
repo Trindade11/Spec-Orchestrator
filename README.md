@@ -1,6 +1,8 @@
 # Spec Orchestrator
 
-> A complete Spec-Driven Development (SDD) methodology toolkit for AI-assisted software development
+> An AI-native Spec-Driven Development toolkit that keeps your specs, code, and agents in sync
+
+Use this if you’re currently coding by vibe with AI and want to move to a visual, spec-driven, PDCA-aligned workflow.
 
 **Version**: 1.0.0 | **License**: MIT | **Status**: Production Ready
 
@@ -8,7 +10,12 @@
 
 ## 🎯 What is Spec Orchestrator?
 
-Spec Orchestrator is a comprehensive methodology and toolkit that enables **specification-driven development** where living specifications are the primary artifacts, and code is generated/assisted by AI agents that consume these specifications.
+Spec Orchestrator is an AI-first methodology and toolkit for **specification-driven development**. Instead of starting from code or ad-hoc prompts, you start from living specifications and let AI agents help you generate and evolve the code around them.
+
+You use Spec Orchestrator when you want to:
+- Capture project intent as living specs, diagrams, and rules.
+- Keep a single orchestration plan that tells you which agent to call next.
+- Turn vague ideas or legacy context into a clear, iterative workflow with visible gaps.
 
 ### Core Philosophy
 
@@ -34,7 +41,7 @@ Living Specification ↔ AI-Assisted Code ← Always in sync
 
 ### 🔄 SDP-PDCA Methodology
 Continuous improvement cycle adapted for AI-assisted development:
-- **PLAN**: Triage → Constitution → Specify → Clarify → Design
+- **PLAN**: Context → (Optional: Triage) → Constitution → Specify → Clarify → Design
 - **DO**: Tasks → Implementation (test-first, traceable)
 - **CHECK**: 6-level validation (artifacts, quality, tests, acceptance, constitution, user)
 - **ACT**: Learn, refine, iterate with versioned artifacts
@@ -81,18 +88,20 @@ cd spec-orchestrator
 # (Windows PowerShell)
 .\.specify\scripts\powershell\check-prerequisites.ps1
 
-# (Optional) Copy methodology to your existing project
+# (Optional) Copy methodology + command definitions to your existing project
 cp -r .specify /path/to/your/project/
-cp -r .windsurf /path/to/your/project/
+cp -r commands /path/to/your/project/
 ```
 
 ### First Steps
 
-1. **Read the documentation**:
+1. **Read the rules and documentation**:
    ```
-   Start with: SYSTEM-PROMPT-CONTEXT.md (for AI agents)
-            or: CATALOG.md (for humans)
+   Start with: Project Rules (AI behavior & workflow for this repo)
+        Then: SYSTEM-PROMPT-CONTEXT.md (for AI agents)
+          or: CATALOG.md (for humans)
    ```
+   - Recommendation: Configure `Project Rules` as your IDE's project-level rules/system prompt so it is always applied automatically for every AI session. If your tools cannot do this, make sure AI agents explicitly read `Project Rules` at the beginning of each session.
 
 2. **Initialize project context**:
    ```
@@ -100,19 +109,19 @@ cp -r .windsurf /path/to/your/project/
    This creates project-workplan.md and project-overview.md
    ```
 
-3. **Define your scope**:
-   ```
-   Run: /speckit-triage (multiple rounds)
-   Separate principles from features
-   ```
-
-4. **Build your constitution**:
+3. **Define project rails (stack + non-negotiable rules)**:
    ```
    Run: /speckit-constitution
-   Consolidate project principles
+   Start by recording a minimal constitution: stack, compliance, and principles that apply to ALL features.
    ```
 
-5. **Create your first spec**:
+4. **Define your scope (choose a flow)**:
+   ```
+   Default: /speckit-specify "Your feature description"  # direct conversation about the first feature
+   Optional (big dump/legacy): /speckit-triage (multiple rounds)  # separates principles from feature requests and fills backlogs, which will later be absorbed by /speckit-constitution and /speckit-specify
+   ```
+
+5. **Create additional specs**:
    ```
    Run: /speckit-specify "Your feature description"
    ```
@@ -126,6 +135,7 @@ cp -r .windsurf /path/to/your/project/
 | Document | Purpose | Read When |
 |----------|---------|-----------|
 | **README.md** | Project overview | You are here! |
+| **Project Rules** | AI behavior rules & workflow integration for this repo | Before using AI agents |
 | **SYSTEM-PROMPT-CONTEXT.md** | Condensed context for AI | Using AI agents |
 | **CATALOG.md** | Complete document inventory | Need to find something |
 | `.specify/docs/README.md` | Documentation hub | Learning the methodology |
@@ -133,7 +143,7 @@ cp -r .windsurf /path/to/your/project/
 ### For AI Agents
 
 **Essential Reading Order**:
-1. `.windsurf/rules/specrules.md` - Project behavior rules
+1. `Project Rules` - Project behavior rules & workflow integration
 2. `project-context/project-workplan.md` - Current phase & next action
 3. `project-context/project-overview.md` - Macro state & gaps
 4. `.specify/memory/constitution.md` - Project principles
@@ -166,9 +176,9 @@ All in `.specify/docs/flows/`:
 | Command | Purpose | Input | Output |
 |---------|---------|-------|--------|
 | `/speckit-context` | Initialize project context | Project info | `project-context/` folder |
-| `/speckit-triage` | Separate principles from features | Mixed input | Backlogs + workplan + overview |
-| `/speckit-constitution` | Create/update principles | Backlog or input | `constitution.md` |
-| `/speckit-specify` | Create feature spec (WHAT/WHY) | Feature description | `spec.md` |
+| `/speckit-specify` | Create feature spec (WHAT/WHY) and update overview/workplan | Feature description or backlog entry | `spec.md` + updated project context |
+| `/speckit-triage` | (Optional) Separate principles from features for large/mixed input, filling backlogs | Mixed/legacy input | Backlogs + workplan + overview |
+| `/speckit-constitution` | Create/update project principles (including stack/compliance rails) | Backlog or input | `constitution.md` |
 | `/speckit-clarify` | Resolve ambiguities | Spec with gaps | Updated `spec.md` |
 | `/speckit-plan` | Create technical plan (HOW) | Spec | `plan.md` |
 | `/speckit-tasks` | Break into tasks | Plan | `tasks.md` |
@@ -182,13 +192,15 @@ All in `.specify/docs/flows/`:
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000'}}}%%
 flowchart LR
-    CTX[/speckit-context] --> TRI[/speckit-triage]
-    TRI --> CON[/speckit-constitution]
+    CTX[/speckit-context] --> CON[/speckit-constitution]
     CON --> SPE[/speckit-specify]
     SPE --> CLA[/speckit-clarify]
     CLA --> PLN[/speckit-plan]
     PLN --> TSK[/speckit-tasks]
     TSK --> IMP[/speckit-implement]
+
+    CTX --> TRI[/speckit-triage]
+    TRI --> CON
     
     style CTX fill:#d1c4e9,stroke:#512da8
     style TRI fill:#ffecb3,stroke:#ff8f00
@@ -204,12 +216,6 @@ flowchart LR
 
 ```
 spec-orchestrator/
-├── .windsurf/                  # IDE configurations
-│   ├── rules/
-│   │   └── specrules.md       # AI agent behavior rules
-│   └── workflows/
-│       └── speckit-*.md       # Command definitions
-│
 ├── .specify/                   # Methodology toolkit
 │   ├── docs/                   # Documentation
 │   │   ├── sdp-pdca.md        # Methodology
@@ -220,6 +226,8 @@ spec-orchestrator/
 │   ├── templates/             # Artifact templates
 │   ├── scripts/               # Automation
 │   └── triage/                # Backlog system
+│
+├── commands/                   # /speckit-* command definitions (IDE-agnostic)
 │
 ├── project-context/            # Project-specific (created by /speckit-context)
 │   ├── project-workplan.md    # 🎯 Orchestration
@@ -239,6 +247,7 @@ spec-orchestrator/
 │
 ├── CATALOG.md                  # Document inventory
 ├── SYSTEM-PROMPT-CONTEXT.md   # AI agent quick reference
+├── Project Rules               # Source of truth for AI rules in this repo
 └── README.md                   # This file
 ```
 
@@ -347,7 +356,7 @@ spec-orchestrator/
 We welcome contributions! Here's how:
 
 1. **Read the methodology**: Start with `.specify/docs/README.md`
-2. **Follow the workflow**: Use `/speckit-triage` to separate ideas
+2. **Follow the workflow**: For new projects, run `/speckit-context` + `/speckit-constitution`; for new features, use `/speckit-specify` (or `/speckit-triage` when you have a big/mixed dump of ideas)
 3. **Create specs first**: Run `/speckit-specify` for new features
 4. **Maintain quality**: All PRs must pass `/speckit-analyze`
 5. **Update memory**: Always update `project-overview.md`
@@ -365,10 +374,11 @@ We welcome contributions! Here's how:
 ## 📖 Learning Resources
 
 ### Getting Started
-1. Read `SYSTEM-PROMPT-CONTEXT.md` (10 min)
-2. Watch the visual flows in `.specify/docs/flows/` (20 min)
-3. Read `best-practices.md` (15 min)
-4. Try `/speckit-context` in a test project (10 min)
+1. Read `Project Rules` (5–10 min)
+2. Read `SYSTEM-PROMPT-CONTEXT.md` (10 min)
+3. Watch the visual flows in `.specify/docs/flows/` (20 min)
+4. Read `best-practices.md` (15 min)
+5. Try `/speckit-context` + `/speckit-constitution` in a test project (10–15 min)
 
 ### Deep Dive
 1. Study `sdp-pdca.md` for methodology (30 min)
@@ -377,7 +387,7 @@ We welcome contributions! Here's how:
 
 ### Master Level
 1. Read all `.specify/docs/flows/*.md` (2h)
-2. Study all workflow definitions in `.windsurf/workflows/` (3h)
+2. Study all workflow definitions in `commands/` (3h)
 3. Understand template system in `.specify/templates/` (1h)
 4. Review all scripts in `.specify/scripts/` (1h)
 
@@ -385,23 +395,23 @@ We welcome contributions! Here's how:
 
 ## 🌟 Why Spec Orchestrator?
 
+Spec Orchestrator is for developers and teams who want to move from fast-but-fragile *vibe coding* to a deliberate, visual, PDCA-aligned way of working with AI.
+
 ### Problems It Solves
 
-❌ **Without Spec Orchestrator**:
-- Specifications outdated or missing
-- Code doesn't match requirements
-- AI agents generate inconsistent code
-- No clear project state
-- Rework due to misalignment
-- Knowledge lost over time
+❌ **Without Spec Orchestrator (typical vibe coding)**:
+- Work starts directly from code or ad-hoc prompts.
+- PLAN is shallow, DO is long and chaotic, CHECK/ACT arrive late.
+- Specifications and diagrams are missing or quickly become outdated.
+- AI sessions are one-off; there is no shared memory or orchestration.
+- Project state is unclear; gaps are discovered late and expensively.
 
-✅ **With Spec Orchestrator**:
-- Living specifications always current
-- Code traces to requirements
-- AI agents follow consistent methodology
-- Clear project state (workplan + overview)
-- Quality built-in (6-level validation)
-- Knowledge captured and reused
+✅ **With Spec Orchestrator (spec-driven flow)**:
+- You design flows, specs, and rules before (and while) coding.
+- The PDCA cycle is explicit: deep PLAN, focused DO, objective CHECK, fast ACT.
+- Visual diagrams make business flows, agent interactions, and gaps explicit.
+- A single workplan + overview keeps AI agents and humans aligned.
+- Rework is reduced and learning is captured in living artifacts.
 
 ### Benefits
 
@@ -457,6 +467,8 @@ MIT License - See [LICENSE](LICENSE) file for details.
 - **W. Edwards Deming** - For PDCA methodology
 - **Mermaid.js** - For beautiful diagrams
 - **Spec-Driven Development community** - For inspiration
+- **GitHub Spec Kit** - Original specification toolkit this methodology was adapted from: <https://github.com/github/spec-kit>
+- **Rodrigo Trindade** - Author and maintainer of this adaptation: <https://www.linkedin.com/in/rtcoutinho/>
 - **AI Agent developers** - For pushing the boundaries
 
 ---
@@ -467,7 +479,7 @@ MIT License - See [LICENSE](LICENSE) file for details.
 - **Examples**: See `.specify/docs/examples.md`
 - **Issues**: GitHub Issues
 - **Discussions**: GitHub Discussions
-- **Email**: support@specorchestrator.dev
+- **Email**: trindade@cocreateai.com.br
 
 ---
 
@@ -481,10 +493,10 @@ MIT License - See [LICENSE](LICENSE) file for details.
 
 **Ready to orchestrate your specifications?**
 
-Start with: `/speckit-context` → `/speckit-triage` → Build something amazing! 🚀
+Start with: `/speckit-context` → `/speckit-constitution` → `/speckit-specify` (or `/speckit-triage` feeding constitution/specify for a big dump) → Build something amazing! 🚀
 
 ---
 
 **Last Updated**: 2024-12-05  
 **Version**: 1.0.0  
-**Maintained by**: Spec Orchestrator Core Team
+**Maintained by**: Spec Orchestrator Core Team (CoCreateAI)

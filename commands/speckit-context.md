@@ -1,10 +1,5 @@
 ---
 description: Initialize or update project context documentation (env vars, database schema, tools, agents).
-auto_execution_mode: 1
----
-
----
-description: Initialize or update project context documentation (env vars, database schema, tools, agents).
 handoffs:
   - label: Create Specification
     agent: speckit-specify
@@ -32,7 +27,6 @@ Initialize or update the `project-context/` folder with documentation for:
 - Tools and MCPs
 - Agent framework (if applicable)
 - Folder structure
-- Project learnings
 
 This context is **project-specific** and lives OUTSIDE `.specify/` (which is the generic toolkit).
 
@@ -40,7 +34,10 @@ This context is **project-specific** and lives OUTSIDE `.specify/` (which is the
 - `project-workplan.md` is the orchestration artifact that tracks which agents to call, in what order, and their status. It guides the entire project lifecycle.
 - `project-overview.md` is the central artifact that shows the project's macro view, completion status, and identified gaps.
 
-Both are automatically updated by `/speckit-triage`, but can also be created/updated here.
+Both are **created** by `/speckit-context` and then **kept in sync mainly by**:
+- `/speckit-specify` (when specs are created/updated)
+- `/speckit-plan` and `/speckit-implement` (when plans/implementation progress)
+- `/speckit-triage` (optionally, when used for a big/mixed input dump)
 
 ## Execution Steps
 
@@ -63,8 +60,7 @@ If `project-context/` doesn't exist:
    ├── database-schema.md
    ├── tools-registry.md
    ├── agent-framework.md
-   ├── folder-structure.md
-   └── learnings.md
+   └── folder-structure.md
    ```
 
 2. Copy templates from `.specify/templates/project-context/` to `project-context/`
@@ -145,7 +141,6 @@ Check each context file for completeness:
 | tools-registry.md | ❌ Empty | Not initialized |
 | agent-framework.md | ⚠️ N/A | No agents detected |
 | folder-structure.md | ✅ Complete | - |
-| learnings.md | ⚠️ Empty | No entries yet |
 ```
 
 ### 5. Create Standard Folders (Optional)
@@ -186,14 +181,13 @@ Create these folders? (yes/no/select)
 - ✅ project-context/tools-registry.md
 - ⏭️ project-context/agent-framework.md (skipped - no agents)
 - ✅ project-context/folder-structure.md
-- ✅ project-context/learnings.md
 
 **Next Steps**:
-1. 🎯 Run `/speckit-triage` to start scope clarification (updates workplan + overview)
-2. Review and update `project-overview.md` with functional blocks
-3. Review and complete `env-vars.md` descriptions
-3. Verify `database-schema.md` accuracy
-4. Add initial entry to `learnings.md`
+1. 🎯 Run `/speckit-constitution` to register a minimal constitution (stack, compliance, non-negotiable rules)
+2. Then start with the first feature using `/speckit-specify` (or use `/speckit-triage` first if you have a big/mixed dump of ideas to separate principles from features)
+3. Review and update `project-overview.md` with functional blocks and capture learnings
+4. Review and complete `env-vars.md` descriptions
+5. Verify `database-schema.md` accuracy
 
 **Tip**: AI agents will automatically read `project-workplan.md` to know which phase you're in, then `project-overview.md` for macro context, then relevant files when processing commands.
 ```
@@ -212,8 +206,9 @@ If user provides arguments, interpret intent:
 | `tools` or `mcp` | Focus on tools-registry.md only |
 | `agents` or `framework` | Focus on agent-framework.md only |
 | `structure` or `folders` | Focus on folder-structure.md only |
-| `learnings` or `log` | Focus on learnings.md only |
 | `status` or `check` | Only report completeness, no changes |
+
+**Note**: Project learnings and knowledge are now captured in `project-overview.md` version history rather than a separate learnings file.
 
 ## Behavior Rules
 

@@ -84,13 +84,22 @@ flowchart TB
 %%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000', 'secondaryTextColor': '#000', 'tertiaryTextColor': '#000', 'lineColor': '#333'}}}%%
 flowchart LR
     subgraph Correct["✅ Correct Flow"]
-        C0[Context] --> C1[Triage]
-        C1 --> C2[Constitution]
-        C2 --> C3[Specify]
-        C3 --> C4[Plan]
-        C4 --> C5[Tasks]
-        C5 --> C6[Implement]
+        C0[/speckit-context/]
+        C1[/speckit-constitution/]
+        C2[/speckit-specify/]
+        C3[/speckit-plan/]
+        C4[/speckit-tasks/]
+        C5[/speckit-implement/]
+        T[/speckit-triage/ (optional for large/mixed input)]
     end
+
+    %% Default path
+    C0 --> C1 --> C2 --> C3 --> C4 --> C5
+
+    %% Optional triage usage
+    T --> C1
+    T --> C2
+    T --> C3
     
     style Correct fill:#c8e6c9,stroke:#388e3c,color:#000
 ```

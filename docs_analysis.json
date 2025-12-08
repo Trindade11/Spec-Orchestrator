@@ -1,120 +1,31 @@
 {
   "windsurf": {
-    "total_files": 11,
-    "total_chars": 92434,
-    "total_lines": 2144,
-    "total_words": 12341,
-    "files": [
-      {
-        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\rules\\specrules.md",
-        "chars": 6343,
-        "lines": 167,
-        "words": 866,
-        "size_kb": 6.19,
-        "readable": true
-      },
-      {
-        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-analyze.md",
-        "chars": 7339,
-        "lines": 189,
-        "words": 968,
-        "size_kb": 7.17,
-        "readable": true
-      },
-      {
-        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-checklist.md",
-        "chars": 12124,
-        "lines": 207,
-        "words": 1593,
-        "size_kb": 11.84,
-        "readable": true
-      },
-      {
-        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-clarify.md",
-        "chars": 11515,
-        "lines": 187,
-        "words": 1591,
-        "size_kb": 11.25,
-        "readable": true
-      },
-      {
-        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-constitution.md",
-        "chars": 6905,
-        "lines": 124,
-        "words": 912,
-        "size_kb": 6.74,
-        "readable": true
-      },
-      {
-        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-context.md",
-        "chars": 7765,
-        "lines": 247,
-        "words": 1057,
-        "size_kb": 7.58,
-        "readable": true
-      },
-      {
-        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-implement.md",
-        "chars": 9650,
-        "lines": 187,
-        "words": 1232,
-        "size_kb": 9.42,
-        "readable": true
-      },
-      {
-        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-plan.md",
-        "chars": 5255,
-        "lines": 134,
-        "words": 666,
-        "size_kb": 5.13,
-        "readable": true
-      },
-      {
-        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-specify.md",
-        "chars": 12130,
-        "lines": 249,
-        "words": 1602,
-        "size_kb": 11.85,
-        "readable": true
-      },
-      {
-        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-taskstoissues.md",
-        "chars": 1240,
-        "lines": 34,
-        "words": 178,
-        "size_kb": 1.21,
-        "readable": true
-      },
-      {
-        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.windsurf\\workflows\\speckit-triage.md",
-        "chars": 12168,
-        "lines": 419,
-        "words": 1676,
-        "size_kb": 11.88,
-        "readable": true
-      }
-    ]
+    "total_files": 0,
+    "total_chars": 0,
+    "total_lines": 0,
+    "total_words": 0,
+    "files": []
   },
   "specify": {
-    "total_files": 38,
-    "total_chars": 255317,
-    "total_lines": 8306,
-    "total_words": 29312,
+    "total_files": 41,
+    "total_chars": 316292,
+    "total_lines": 10321,
+    "total_words": 36619,
     "files": [
       {
         "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\agent-context.md",
-        "chars": 12931,
-        "lines": 341,
-        "words": 1194,
-        "size_kb": 12.63,
+        "chars": 13226,
+        "lines": 344,
+        "words": 1222,
+        "size_kb": 12.92,
         "readable": true
       },
       {
         "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\best-practices.md",
-        "chars": 9264,
-        "lines": 336,
-        "words": 1015,
-        "size_kb": 9.05,
+        "chars": 9467,
+        "lines": 345,
+        "words": 1035,
+        "size_kb": 9.25,
         "readable": true
       },
       {
@@ -134,6 +45,14 @@
         "readable": true
       },
       {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\memory-system.md",
+        "chars": 18555,
+        "lines": 615,
+        "words": 2148,
+        "size_kb": 18.12,
+        "readable": true
+      },
+      {
         "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\migration-guide.md",
         "chars": 12334,
         "lines": 426,
@@ -142,11 +61,27 @@
         "readable": true
       },
       {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\project-rhythm.md",
+        "chars": 17232,
+        "lines": 575,
+        "words": 2238,
+        "size_kb": 16.83,
+        "readable": true
+      },
+      {
         "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\README.md",
         "chars": 1903,
         "lines": 60,
         "words": 234,
         "size_kb": 1.86,
+        "readable": true
+      },
+      {
+        "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\sdp-pdca.md",
+        "chars": 22437,
+        "lines": 750,
+        "words": 2618,
+        "size_kb": 21.91,
         "readable": true
       },
       {
@@ -167,10 +102,10 @@
       },
       {
         "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\flows\\decision-tree.md",
-        "chars": 9855,
-        "lines": 255,
-        "words": 928,
-        "size_kb": 9.62,
+        "chars": 9951,
+        "lines": 261,
+        "words": 945,
+        "size_kb": 9.72,
         "readable": true
       },
       {
@@ -199,18 +134,18 @@
       },
       {
         "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\flows\\overview.md",
-        "chars": 7130,
-        "lines": 211,
-        "words": 616,
-        "size_kb": 6.96,
+        "chars": 7470,
+        "lines": 222,
+        "words": 647,
+        "size_kb": 7.29,
         "readable": true
       },
       {
         "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\docs\\flows\\project-lifecycle.md",
-        "chars": 10912,
-        "lines": 344,
-        "words": 1247,
-        "size_kb": 10.66,
+        "chars": 12323,
+        "lines": 381,
+        "words": 1394,
+        "size_kb": 12.03,
         "readable": true
       },
       {
@@ -343,10 +278,10 @@
       },
       {
         "path": "C:\\Users\\rodrigo.trindade\\Projetos\\Spec Orchestrator\\.specify\\templates\\project-context\\learnings-template.md",
-        "chars": 3769,
-        "lines": 223,
-        "words": 533,
-        "size_kb": 3.68,
+        "chars": 4175,
+        "lines": 232,
+        "words": 593,
+        "size_kb": 4.08,
         "readable": true
       },
       {
@@ -408,10 +343,10 @@
     ]
   },
   "global": {
-    "total_files": 49,
-    "total_chars": 347751,
-    "total_lines": 10450,
-    "total_words": 41653,
-    "estimated_tokens": 86937
+    "total_files": 41,
+    "total_chars": 316292,
+    "total_lines": 10321,
+    "total_words": 36619,
+    "estimated_tokens": 79073
   }
 }

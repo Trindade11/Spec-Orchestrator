@@ -9,20 +9,27 @@ This project uses Spec Kit for Spec-Driven Development. The methodology separate
 - **Specification**: What a specific feature does and why (business view)
 - **Plan**: How a feature will be implemented technically
 
+Specifications are **living artifacts**: expect to revisit the same feature across multiple `/speckit-specify` runs (and `/speckit-clarify` sessions) until it is ready for planning.
+
 ### Available Commands
 
 | Command | Purpose |
 |---------|---------|
-| `/speckit-triage` | Analyzes mixed/broad user input and separates Constitution content from Specification content |
-| `/speckit-constitution` | Creates/updates project principles and rules |
-| `/speckit-context` | Documents project context (env vars, database schema, tools, agents) |
-| `/speckit-specify` | Creates feature specifications (WHAT and WHY, no technical details) |
+| `/speckit-context` | Initializes/updates `project-context/` (creates `project-workplan.md` + `project-overview.md`, env vars, database schema, tools, agents) |
+| `/speckit-constitution` | Creates/updates project principles and rules. At project start, capture **minimum rails** (stack, compliance, non-negotiable rules) before specifying features |
+| `/speckit-specify` | Creates/updates feature specifications (WHAT and WHY, no technical details) through iterative runs and keeps workplan/overview in sync as specs evolve |
+| `/speckit-triage` | **Optional.** For broad/mixed input (voice, docs, brain dump). Routes content to Constitution vs Specification backlogs and also updates workplan/overview when used |
 | `/speckit-plan` | Creates technical implementation plans (HOW) |
 | `/speckit-tasks` | Breaks plans into actionable tasks |
 | `/speckit-implement` | Executes implementation following the plan |
 | `/speckit-clarify` | Asks structured questions to de-risk ambiguous areas |
 | `/speckit-analyze` | Cross-artifact consistency report |
 | `/speckit-checklist` | Generates quality checklists |
+
+Typical starting points:
+- **New project** → `/speckit-context` → `/speckit-constitution` (minimal rails: stack + fixed rules) → `/speckit-specify` for the first feature.
+- **New feature in a project that already has a constitution** → `/speckit-specify` directly.
+- **Chaotic, long or legacy input (voice, large doc, many mixed ideas)** → `/speckit-context` → `/speckit-triage` in N rounds → then `/speckit-constitution` and `/speckit-specify` absorb the backlogs.
 
 ## Visual Modeling Requirements
 
@@ -93,22 +100,39 @@ The project evolves progressively (Macro → Micro):
 
 ### Project Start Sequence (for new projects)
 
+**Default conversational flow (recommended)**
+
 1. **Step 0**: Run `/speckit-context` → Creates `project-workplan.md` + `project-overview.md`
-2. **Step 1**: Run `/speckit-triage` (first round) → Capture initial scope
-3. **Step 2**: Continue `/speckit-triage` (N rounds) → Refine until macro view is stable
-4. **Step 3**: Decision Point DP1 → Define project structure
-5. **Step 4**: Run `/speckit-constitution` → Consolidate principles
-6. **Step 5**: Run `/speckit-specify` → Create feature specs
-7. **Step 6**: Run `/speckit-plan` → Technical design
-8. **Step 7**: Run `/speckit-tasks` → Break into tasks
-9. **Step 8**: Run `/speckit-implement` → Execute
+2. **Step 1**: Run `/speckit-constitution` → Register a minimal constitution with stack, compliance and non-negotiable rules
+3. **Step 2**: Discuss the first feature and run `/speckit-specify` → Creates the first `spec.md` and updates overview/workplan
+4. **Step 3**: Use `/speckit-clarify` if needed → Resolves important gaps in the specification
+5. **Step 4**: Run `/speckit-plan` → Technical design for the feature
+6. **Step 5**: Run `/speckit-tasks` → Break into tasks
+7. **Step 6**: Run `/speckit-implement` → Execute
 
-### Multi-Round Triage
+**Optional flow with big dump / legacy input (with `/speckit-triage`)**
 
-`/speckit-triage` is designed for **N interactions**, not one-shot:
+1. **Step A0**: Run `/speckit-context` → Creates `project-workplan.md` + `project-overview.md`
+2. **Step A1**: Run `/speckit-triage` (first round) → Capture initial scope from mixed input
+3. **Step A2**: Continue `/speckit-triage` (N rounds) → Refine until macro view is stable
+4. **Step A3**: Decision Point DP1 → Define project structure
+5. **Step A4**: Run `/speckit-constitution` → Consolidate principles from triage backlog
+6. **Step A5**: Run `/speckit-specify` → Create feature specs (absorbing entries from `triage_specification.md`)
+7. **Step A6**: Run `/speckit-plan` → Technical design
+8. **Step A7**: Run `/speckit-tasks` → Break into tasks
+9. **Step A8**: Run `/speckit-implement` → Execute
+
+### Multi-Round Discovery and Specification
+
+When you choose the triage-based flow, `/speckit-triage` is designed for **N interactions**, not one-shot:
 - Round 1: Initial vision, objective, product type
 - Round 2..N: Progressively refine personas, use cases, constraints
 - Exit when: Macro view stable, constitution backlog clear, at least one feature ready to specify
+
+**Iterative specification**:
+- `/speckit-specify` is also naturally multi-round.
+- When triage is used, it absorbs entries from `triage_specification.md` across multiple runs.
+- When triage is **not** used, it iterates directly on the same `spec.md` via conversation and repeated `/speckit-specify` + `/speckit-clarify` calls.
 
 ### Decision Points
 
@@ -156,7 +180,8 @@ At the end of EVERY phase, deliverable, or significant output, always ask:
 
 ## Source of Truth
 
-- **Constitution**: `.specify/memory/constitution.md` - read FIRST for project rules
+- **Project Rules**: `Project Rules` (this file) - primary AI rules for this repository; read FIRST before any work
+- **Constitution**: `.specify/memory/constitution.md` - project-level principles and constraints; read soon after Project Rules when working inside this project or updating methodology
 - **Methodology**: `.specify/docs/sdp-pdca.md` - Spec-Driven PDCA cycle (PLAN → DO → CHECK → ACT)
 - **Memory System**: `.specify/docs/memory-system.md` - Continuous state management and update protocols
 - **Project Context**: `project-context/` - project-specific technical documentation
@@ -167,7 +192,7 @@ At the end of EVERY phase, deliverable, or significant output, always ask:
 
 For deep understanding of the process:
 - **SDP-PDCA**: Complete PDCA adaptation for spec-driven development
-  - PLAN: Context → Triage → Constitution → Specify → Clarify → Design
+  - PLAN: Context → (Optional: Triage) → Constitution → Specify → Clarify → Design
   - DO: Tasks → Implementation (5 phases: Setup, Tests, Core, Integration, Polish)
   - CHECK: 6-level validation (artifacts, quality, tests, acceptance, constitution, user)
   - ACT: Categorized refinement + knowledge capture in artifact versions
