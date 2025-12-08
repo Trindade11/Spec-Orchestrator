@@ -190,16 +190,15 @@ All in `.specify/docs/flows/`:
 ### Command Sequence (New Project)
 
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryTextColor': '#000'}}}%%
 flowchart LR
-    CTX[/speckit-context] --> CON[/speckit-constitution]
-    CON --> SPE[/speckit-specify]
-    SPE --> CLA[/speckit-clarify]
-    CLA --> PLN[/speckit-plan]
-    PLN --> TSK[/speckit-tasks]
-    TSK --> IMP[/speckit-implement]
+    CTX["/speckit-context"] --> CON["/speckit-constitution"]
+    CON --> SPE["/speckit-specify"]
+    SPE --> CLA["/speckit-clarify"]
+    CLA --> PLN["/speckit-plan"]
+    PLN --> TSK["/speckit-tasks"]
+    TSK --> IMP["/speckit-implement"]
 
-    CTX --> TRI[/speckit-triage]
+    CTX --> TRI["/speckit-triage"]
     TRI --> CON
     
     style CTX fill:#d1c4e9,stroke:#512da8
